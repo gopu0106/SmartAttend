@@ -113,7 +113,7 @@ const Signup = () => {
     return (
         <AuthShell
             title="Create Account"
-            subtitle="Join AttendanceCoin today"
+            subtitle="Join SmartAttend Mess Portal today"
         >
             {/* User Type Selector - 2x2 Grid */}
             <div className="mb-8">

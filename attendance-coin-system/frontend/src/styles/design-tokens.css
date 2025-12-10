@@ -228,3 +228,54 @@
 .breathe {
     animation: breathe 3s ease-in-out infinite;
 }
+
+/* Additional Shadow Utilities */
+.shadow-glow-primary {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.shadow-glow-cyan {
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+.shadow-glow-soft {
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.15);
+}
+
+/* Icon Badge Utilities */
+.icon-badge {
+    padding: 12px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-badge--primary {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.icon-badge--cyan {
+    background: rgba(34, 211, 238, 0.2);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+}
+
+.icon-badge--green {
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.icon-badge--orange {
+    background: rgba(251, 146, 60, 0.2);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+}
+
+/* Rounded Card Variants */
+.rounded-card-glass {
+    border-radius: var(--radius-card);
+}
+
+.rounded-card-md {
+    border-radius: var(--radius-card-md);
+}

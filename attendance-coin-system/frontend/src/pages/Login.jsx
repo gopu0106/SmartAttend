@@ -10,6 +10,7 @@ import { ROLES } from '../constants/roles';
 
 const Login = () => {
     const [formData, setFormData] = useState({ username: '', password: '' });
+    const [selectedRole, setSelectedRole] = useState(ROLES.STUDENT);
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [loading, setLoading] = useState(false);
@@ -61,13 +62,51 @@ const Login = () => {
         }
     };
 
+    const userTypes = [
+        { value: ROLES.STUDENT, label: 'Student', icon: '🎓' },
+        { value: ROLES.FACULTY, label: 'Faculty', icon: '👨‍🏫' },
+        { value: ROLES.ADMIN, label: 'Admin', icon: '👤' },
+        { value: ROLES.MESS_STAFF, label: 'Mess Staff', icon: '🍽️' }
+    ];
+
     return (
         <AuthShell
             title="Welcome Back"
-            subtitle="Sign in to AttendanceCoin"
+            subtitle="Sign in to SmartAttend Mess Portal"
         >
             <SuccessMessage message={successMessage} className="mb-6" />
             <ErrorMessage message={error} className="mb-6" />
+
+            {/* Role Selection Toggle */}
+            <div className="mb-8">
+                <label className="block text-sm font-semibold text-text-light mb-4">
+                    Sign in as:
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                    {userTypes.map((type) => (
+                        <button
+                            key={type.value}
+                            type="button"
+                            onClick={() => setSelectedRole(type.value)}
+                            className={`
+                                p-3 rounded-card-md border-2 transition-smooth hover-lift flex flex-col items-center justify-center gap-2
+                                ${selectedRole === type.value
+                                    ? 'border-primary-violet bg-primary-violet/10 shadow-glow-primary'
+                                    : 'border-glass-border glass-card hover:border-glass-border-hover'
+                                }
+                            `}
+                        >
+                            <div className="text-2xl">{type.icon}</div>
+                            <div
+                                className={`text-xs font-semibold ${selectedRole === type.value ? 'text-primary-violet' : 'text-text-light'
+                                    }`}
+                            >
+                                {type.label}
+                            </div>
+                        </button>
+                    ))}
+                </div>
+            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -129,8 +168,13 @@ const Login = () => {
             </div>
 
             <div className="mt-8 pt-6 border-t border-glass-border text-center text-sm text-text-muted-dark">
-                <p className="font-medium mb-1">Demo Credentials:</p>
-                <p>Admin: admin / admin123</p>
+                <p className="font-medium mb-2">Demo Credentials (Password: admin123):</p>
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-left inline-block mx-auto">
+                    <p><span className="font-semibold">Admin:</span> admin</p>
+                    <p><span className="font-semibold">Faculty:</span> faculty_demo</p>
+                    <p><span className="font-semibold">Mess:</span> mess_demo</p>
+                    <p><span className="font-semibold">Student:</span> student_demo</p>
+                </div>
             </div>
         </AuthShell>
     );

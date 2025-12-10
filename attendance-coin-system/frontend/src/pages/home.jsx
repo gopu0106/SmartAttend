@@ -80,12 +80,12 @@ const Home = () => {
 
                 {/* Main Heading */}
                 <h1 className="text-6xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-                    Welcome to <span className="text-blue-600">AttendanceCoin</span>
+                    Welcome to <span className="text-blue-600">SmartAttend</span>
                 </h1>
 
                 {/* Subtitle */}
                 <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto font-light">
-                    Your smart solution to manage attendance, earn rewards, and track activities effortlessly.
+                    Your smart solution to manage mess attendance, payments, and track meal activity effortlessly.
                 </p>
 
                 {/* CTA Buttons */}

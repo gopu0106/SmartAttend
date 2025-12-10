@@ -42,7 +42,7 @@ const AppShell = ({ children }) => {
                                 <div className="w-8 h-8 rounded-lg bg-gradient-button flex items-center justify-center shadow-glow-soft">
                                     <span className="text-white font-bold text-lg">A</span>
                                 </div>
-                                <span className="text-xl font-bold text-text-light">AttendanceCoin</span>
+                                <span className="text-xl font-bold text-text-light">SmartAttend</span>
                             </div>
 
                             {/* Welcome Badge */}

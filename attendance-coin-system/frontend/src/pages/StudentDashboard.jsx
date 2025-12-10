@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/axios';
-import { Wallet, History, Gift, ArrowUpRight, ArrowDownLeft, TrendingUp, CreditCard, UserCheck, AlertCircle } from 'lucide-react';
+import { Wallet, History, Gift, ArrowUpRight, ArrowDownLeft, TrendingUp, CreditCard, UserCheck, AlertCircle, Lock } from 'lucide-react';
 import { useAnimatedRef } from '../contexts/AnimationProvider';
 import Card from '../components/ui/Card';
 import PrimaryButton from '../components/ui/PrimaryButton';
@@ -93,8 +93,8 @@ export default function StudentDashboard() {
             >
                 <div className="flex items-center gap-4">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tx.type === 'credit'
-                            ? 'bg-emerald-100 text-emerald-600'
-                            : 'bg-red-100 text-red-600'
+                        ? 'bg-emerald-100 text-emerald-600'
+                        : 'bg-red-100 text-red-600'
                         }`}>
                         {tx.type === 'credit' ? <ArrowDownLeft className="w-5 h-5" /> : <ArrowUpRight className="w-5 h-5" />}
                     </div>
@@ -178,9 +178,12 @@ export default function StudentDashboard() {
                                     <TrendingUp className="w-6 h-6" />
                                 </div>
                                 <h3 className="text-lg font-semibold text-gray-900">Mess Credit</h3>
+                                <div className="ml-auto p-1.5 bg-gray-100/50 rounded-lg" title="Credits locked by Admin">
+                                    <Lock className="w-4 h-4 text-gray-500" />
+                                </div>
                             </div>
                             <div className="flex items-baseline gap-1">
-                                <span className="text-5xl font-extrabold text-gray-900">₹{wallet.mess_balance}</span>
+                                <span className="text-5xl font-extrabold text-gray-900">₹{parseFloat(wallet.mess_balance).toFixed(2)}</span>
                             </div>
                             <div className="mt-6 flex items-center justify-between text-sm">
                                 <span className="text-gray-600 font-medium">Prepaid Balance</span>
@@ -221,8 +224,8 @@ export default function StudentDashboard() {
                                     <span className="text-gray-900 font-bold">{attendance.attended}</span>
                                 </div>
                                 <span className={`flex items-center gap-1 font-semibold px-2 py-1 rounded-full ${attendance.percentage >= 75
-                                        ? 'bg-emerald-100 text-emerald-700'
-                                        : 'bg-red-100 text-red-700'
+                                    ? 'bg-emerald-100 text-emerald-700'
+                                    : 'bg-red-100 text-red-700'
                                     }`}>
                                     {attendance.percentage >= 75 ? <UserCheck className="w-3 h-3" /> : <AlertCircle className="w-3 h-3" />}
                                     {attendance.percentage >= 75 ? 'Safe' : 'Low'}
@@ -312,10 +315,10 @@ export default function StudentDashboard() {
                                                 onClick={() => setRedeemAmount(amount)}
                                                 disabled={wallet.coin_balance < amount}
                                                 className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${wallet.coin_balance < amount
-                                                        ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
-                                                        : redeemAmount == amount
-                                                            ? 'bg-accent-indigo/20 border-accent-indigo text-accent-indigo'
-                                                            : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                                                    ? 'bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed'
+                                                    : redeemAmount == amount
+                                                        ? 'bg-accent-indigo/20 border-accent-indigo text-accent-indigo'
+                                                        : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
                                                     }`}
                                             >
                                                 {amount}

@@ -56,6 +56,43 @@ const FacultyAttendance = () => {
         setSelectedStudents([]);
     };
 
+    const handleExportCSV = () => {
+        // Define CSV headers
+        const headers = ['Date', 'Time', 'Student ID', 'Student Name', 'Status', 'Marked By', 'Method'];
+
+        // Format data rows
+        const rows = students.map(student => [
+            date,
+            new Date().toLocaleTimeString(), // Using current time for export
+            student.rollNo,
+            student.name,
+            student.status,
+            'Faculty User', // Placeholder for current user
+            'Manual'
+        ]);
+
+        // Combine headers and rows
+        const csvContent = [
+            headers.join(','),
+            ...rows.map(row => row.join(','))
+        ].join('\n');
+
+        // Create blob and download link
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+
+        link.setAttribute('href', url);
+        link.setAttribute('download', `attendance_log_${date}.csv`);
+        link.style.visibility = 'hidden';
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        toast.success(`Exported attendance for ${date}`);
+    };
+
     const handleSubmit = () => {
         console.log('Submitting attendance for:', date, students);
         toast.success('Attendance saved successfully!');
@@ -201,8 +238,8 @@ const FacultyAttendance = () => {
                                         <td className="px-6 py-4 whitespace-nowrap text-center">
                                             <span className={`status-pill status-pill--${student.status}`}>
                                                 <span className={`pulsing-dot ${student.status === 'present' ? 'bg-green-400' :
-                                                        student.status === 'absent' ? 'bg-red-400' :
-                                                            'bg-yellow-400'
+                                                    student.status === 'absent' ? 'bg-red-400' :
+                                                        'bg-yellow-400'
                                                     }`}></span>
                                                 {student.status}
                                             </span>
@@ -212,8 +249,8 @@ const FacultyAttendance = () => {
                                                 <button
                                                     onClick={() => handleStatusChange(student.id, 'present')}
                                                     className={`p-2 rounded-lg transition-smooth ${student.status === 'present'
-                                                            ? 'bg-green-500 text-white shadow-glow-soft'
-                                                            : 'bg-white/5 text-text-muted-dark hover:bg-green-500/20 hover:text-green-400 border border-glass-border'
+                                                        ? 'bg-green-500 text-white shadow-glow-soft'
+                                                        : 'bg-white/5 text-text-muted-dark hover:bg-green-500/20 hover:text-green-400 border border-glass-border'
                                                         }`}
                                                     title="Mark Present"
                                                 >
@@ -222,8 +259,8 @@ const FacultyAttendance = () => {
                                                 <button
                                                     onClick={() => handleStatusChange(student.id, 'absent')}
                                                     className={`p-2 rounded-lg transition-smooth ${student.status === 'absent'
-                                                            ? 'bg-red-500 text-white shadow-glow-soft'
-                                                            : 'bg-white/5 text-text-muted-dark hover:bg-red-500/20 hover:text-red-400 border border-glass-border'
+                                                        ? 'bg-red-500 text-white shadow-glow-soft'
+                                                        : 'bg-white/5 text-text-muted-dark hover:bg-red-500/20 hover:text-red-400 border border-glass-border'
                                                         }`}
                                                     title="Mark Absent"
                                                 >
@@ -232,8 +269,8 @@ const FacultyAttendance = () => {
                                                 <button
                                                     onClick={() => handleStatusChange(student.id, 'late')}
                                                     className={`p-2 rounded-lg transition-smooth ${student.status === 'late'
-                                                            ? 'bg-yellow-500 text-white shadow-glow-soft'
-                                                            : 'bg-white/5 text-text-muted-dark hover:bg-yellow-500/20 hover:text-yellow-400 border border-glass-border'
+                                                        ? 'bg-yellow-500 text-white shadow-glow-soft'
+                                                        : 'bg-white/5 text-text-muted-dark hover:bg-yellow-500/20 hover:text-yellow-400 border border-glass-border'
                                                         }`}
                                                     title="Mark Late"
                                                 >
@@ -275,7 +312,7 @@ const FacultyAttendance = () => {
                 {/* Footer */}
                 <div className="p-6 bg-white/5 border-t border-glass-border flex flex-col sm:flex-row justify-between items-center gap-4">
                     <button
-                        onClick={() => toast.success('CSV exported!')}
+                        onClick={handleExportCSV}
                         className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 text-text-light border border-glass-border hover:border-primary-violet hover:shadow-glow-soft transition-smooth"
                     >
                         <Download className="w-4 h-4" />

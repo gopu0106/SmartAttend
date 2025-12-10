@@ -112,7 +112,7 @@ const LandingPage = () => {
                             <div className="w-8 h-8 rounded-lg bg-gradient-button flex items-center justify-center shadow-glow-soft">
                                 <span className="text-white font-bold text-lg">A</span>
                             </div>
-                            <span className="text-xl font-bold text-text-light">AttendanceCoin</span>
+                            <span className="text-xl font-bold text-text-light">SmartAttend</span>
                         </div>
 
                         {/* Nav Links */}
@@ -151,14 +151,14 @@ const LandingPage = () => {
 
                         <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                             <span className="text-text-light">Turn </span>
-                            <span className="gradient-text">Attendance</span>
+                            <span className="gradient-text">Mess Management</span>
                             <span className="text-text-light"> into a </span>
-                            <span className="gradient-text">Rewarding Coin System.</span>
+                            <span className="gradient-text">Seamless Experience.</span>
                         </h1>
 
                         <p className="text-xl text-text-muted-dark leading-relaxed">
-                            Gamify attendance with a blockchain-inspired reward system.
-                            Students earn coins for showing up, redeem them for real perks.
+                            Upgrade your campus dining with SmartAttend.
+                            Digital attendance, mess credits, and real-time analytics in one platform.
                         </p>
 
                         <div className="flex items-center gap-4 flex-wrap">
@@ -193,7 +193,7 @@ const LandingPage = () => {
                         How It <span className="gradient-text">Works</span>
                     </h2>
                     <p className="text-xl text-text-muted-dark max-w-2xl mx-auto">
-                        A simple 4-step process that transforms attendance into engagement
+                        A simple 4-step process that transforms mess management
                     </p>
                 </div>
 
@@ -232,7 +232,7 @@ const LandingPage = () => {
                         Loved by <span className="gradient-text">Educators</span>
                     </h2>
                     <p className="text-xl text-text-muted-dark max-w-2xl mx-auto">
-                        See what faculty and students are saying about AttendanceCoin
+                        See what faculty and students are saying about SmartAttend
                     </p>
                 </div>
 
@@ -251,7 +251,7 @@ const LandingPage = () => {
                                     <div className="text-xs text-primary-violet">{testimonial.university}</div>
                                 </div>
                             </div>
-                            <p className="text-text-muted-dark italic leading-relaxed">"{testimonial.quote}"</p>
+                            <p className="text-text-muted-dark italic leading-relaxed">"{testimonial.quote.replace('AttendanceCoin', 'SmartAttend')}"</p>
                         </div>
                     ))}
                 </div>
@@ -299,10 +299,10 @@ const LandingPage = () => {
             <div className="content-container py-20">
                 <div className="glass-card p-12 text-center fade-in-up">
                     <h2 className="text-4xl font-bold text-text-light mb-4">
-                        Ready to Transform Attendance?
+                        Ready to Transform Mess Management?
                     </h2>
                     <p className="text-xl text-text-muted-dark mb-8 max-w-2xl mx-auto">
-                        Join 50+ institutions already using AttendanceCoin to boost engagement
+                        Join 50+ institutions already using SmartAttend to boost efficiency
                     </p>
                     <GlowButton
                         onClick={() => navigate('/signup')}

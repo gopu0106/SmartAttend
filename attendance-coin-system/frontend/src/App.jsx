@@ -5,6 +5,7 @@ import StudentDashboard from './pages/StudentDashboard';
 import FacultyAttendance from './pages/FacultyAttendance';
 import MessTerminal from './pages/MessTerminal';
 import AdminPanel from './pages/AdminPanel';
+import QRScanner from './pages/QRScanner';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import LandingPage from './pages/LandingPage';
@@ -71,6 +72,16 @@ function App() {
             <ProtectedRoute>
               <AppShell>
                 <AdminPanel />
+              </AppShell>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/qr-scan"
+          element={
+            <ProtectedRoute>
+              <AppShell>
+                <QRScanner />
               </AppShell>
             </ProtectedRoute>
           }
