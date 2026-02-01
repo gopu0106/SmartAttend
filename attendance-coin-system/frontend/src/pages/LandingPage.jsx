@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Users, Coins, Gift, Settings, BarChart3, Utensils } from 'lucide-react';
-import OrbitAnimation from '../components/animations/OrbitAnimation';
+import Antigravity from '../components/animations/Antigravity';
 import GlowButton from '../components/ui/GlowButton';
 
 const LandingPage = () => {
@@ -102,7 +102,28 @@ const LandingPage = () => {
     ];
 
     return (
-        <div className="page-bg min-h-screen">
+        <div className="page-bg min-h-screen relative">
+            {/* Background Animation - Highly Reactive */}
+            <div className="fixed inset-0 z-0 pointer-events-auto opacity-60">
+                <Antigravity
+                    count={800}
+                    magnetRadius={15}
+                    ringRadius={12}
+                    waveSpeed={2.5}
+                    waveAmplitude={2.5}
+                    particleSize={1.8}
+                    lerpSpeed={0.12}
+                    color="#8b5cf6"
+                    autoAnimate
+                    particleVariance={1.5}
+                    rotationSpeed={0.2}
+                    depthFactor={2}
+                    pulseSpeed={4}
+                    particleShape="sphere"
+                    fieldStrength={12}
+                />
+            </div>
+
             {/* Navbar */}
             <nav className="glass-card border-0 border-b border-glass-border backdrop-blur-glass rounded-none">
                 <div className="content-container py-4">
@@ -179,9 +200,9 @@ const LandingPage = () => {
                         </div>
                     </div>
 
-                    {/* Right Column */}
-                    <div className="h-[500px] flex items-center justify-center float-animation">
-                        <OrbitAnimation />
+                    {/* Hero Text Placeholder (OrbitAnimation was here) */}
+                    <div className="h-[400px] lg:h-[500px] flex items-center justify-center relative z-10 pointer-events-none">
+                        {/* Empty space kept to maintain layout balance, Antigravity will be visible through it */}
                     </div>
                 </div>
             </div>
